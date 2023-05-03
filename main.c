@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-#include "Fila.h"
+#include "fila.h"
 #include "pilha.h"
 #include <stdbool.h>
 
@@ -11,7 +11,7 @@ Pilha p;
 
 int main(){
     int n, a, b, **adj, *vis, *pais; 
-    printf("quantos nodos existem na grafo?\n");
+    printf("quantos nodos existem no grafo?\n");
     scanf("%d", &n);
 
     //iniciando os vetor "dinamicamente"
@@ -56,11 +56,11 @@ int main(){
             }
         }
     }
-    
 
     if(!flag){
         printf("Nao ha caminho entre %d e %d\n", a, b);
     } else {
+        // pegando o caminho de volta :)
         printf("Caminho de %d ate %d: ", a, b);
         int aux = b;
         inicializa_pilha(&p, n+5);
@@ -76,19 +76,17 @@ int main(){
     }
     for(int i = 0; i < n; i++){
         int k;
+        printf("->");
         if(desempilha(&p, &k) != ERRO_PILHA_VAZIA){
-            printf("\n", k);
+            printf("%d", k);
         };
     }
     printf("\n");
     //libera memoria
-    for(int i = 1; i <= n; i++){
-        free(adj[i]);
-    }
+    for(int i = 1; i <= n; i++) free(adj[i]);
     free(adj);
     free(vis);
     free(pais);
-
 
     return EXIT_SUCCESS;
 }
