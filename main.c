@@ -76,12 +76,11 @@ int main(){
     }
     for(int i = 0; i < n; i++){
         int k;
-        printf("->");
         if(desempilha(&p, &k) != ERRO_PILHA_VAZIA){
-            printf("%d", k);
+            printf("%d -> ", k);
         };
     }
-    printf("\n");
+    printf("fim\n");
     //libera memoria
     for(int i = 1; i <= n; i++) free(adj[i]);
     free(adj);
